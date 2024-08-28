@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-const Comp1 = () => {
-    useEffect(() => {
-        console.log("Initial render of comp1");
-        return () => {
-            console.log("Comp removed!");
-        }
-    })
+const Comp1 = ({ value }) => {
+    console.log("Comp1 rendered..");
     return (
-        <h1>Comp1</h1>
+        <>
+            <h1>Comp1</h1>
+            <h2>New Value : {value}</h2>
+        </>
     )
 }
 
-export default Comp1
+export default React.memo(Comp1)
