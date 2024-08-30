@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MyContext } from '../App'
 
-const Comp12 = ({ value }) => {
+const Comp12 = () => {
+    const { value, setValue } = useContext(MyContext)
     console.log("Comp12 rendered");
     return (
         <>
             <h1>Comp12</h1>
-            <h2>Value in Comp12 : {value}</h2>
+            <h2>value: {value}</h2>
+            <button onClick={() => setValue(value + 1)}>Increment value</button>
         </>
     )
 }
