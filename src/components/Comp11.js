@@ -6,6 +6,7 @@ const Comp11 = () => {
     return (
         <>
             <h1>Comp11</h1>
+
             <Comp12 />
         </>
     )

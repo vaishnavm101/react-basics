@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Comp1 from './components/Comp1'
+import Comp1 from '../components/Comp1'
 
 const App = () => {
     const [value, setValue] = useState(0);

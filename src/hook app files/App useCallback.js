@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import Comp3 from './components/Comp3';
+import Comp3 from '../components/Comp3';
 
 const App = () => {
     const [value, setValue] = useState(0);
