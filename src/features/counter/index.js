@@ -15,6 +15,9 @@ const counterSlice = createSlice({
             console.log("decrement called")
             // return { ...state, count: state.count - 1 }
             state.count -= 1
+        },
+        incrementByValue: (state, action) => {
+            state.count += parseInt(action.payload)
         }
     }
 })
@@ -23,6 +26,6 @@ const counterSlice = createSlice({
 // export const counterReducer = counterSlice.reducer
 export default counterSlice.reducer
 
-export const { increment, decrement } = counterSlice.actions
+export const { increment, decrement, incrementByValue } = counterSlice.actions
 
 // { increment: () => {return {type: 'counter/increment'}},  decrement: () => { return {type: 'counter/decrement'}}}

@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { decrement, increment } from './features/counter';
+import { decrement, increment, incrementByValue } from './features/counter';
 import { produce } from 'immer';
+import Navbar from './pages/Navbar';
+import { Outlet } from 'react-router-dom';
 // import { decrement, increment } from './features/counter';
 // import { decrement, increment, incrementByValue } from './redux/actions';
 
@@ -11,27 +13,31 @@ const App = () => {
     const dispatch = useDispatch();
     const inputRef = useRef();
 
-    let [obj, setObj] = useState({ name: "TestName", marks: [80, 90, 87], city: "TestCity" })
+    // let [obj, setObj] = useState({ name: "TestName", marks: [80, 90, 87], city: "TestCity" })
 
-    const handleClick = () => {
-        setObj({ ...obj, city: "New CIty" })
-        const newObj = produce(obj, (draft) => {
-            draft.city = "New City"
-        })
-        setObj(newObj)
-    }
+    // const handleClick = () => {
+    //     setObj({ ...obj, city: "New CIty" })
+    //     const newObj = produce(obj, (draft) => {
+    //         draft.city = "New City"
+    //     })
+    //     setObj(newObj)
+    // }
 
     return (
         <>
             <h1>App</h1>
+            <Navbar />
+            <Outlet />
             <h2>Count: {count}</h2>
             <h3>Name: {name}</h3>
             <button onClick={() => dispatch(increment())}>Increment</button>
             <button onClick={() => dispatch(decrement())}>Decrement</button>
             <hr />
-
+            <input type="text" ref={inputRef} />
+            <button onClick={() => dispatch(incrementByValue(inputRef.current.value))}>Inc by</button>
+            {/* 
             <h3>{JSON.stringify(obj)}</h3>
-            <button onClick={handleClick}>Change City</button>
+            <button onClick={handleClick}>Change City</button> */}
 
             {/* <button onClick={() => console.log(increment(100))}>Check</button> */}
             {/* <h2>Users: {users}</h2> */}
