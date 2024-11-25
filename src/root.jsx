@@ -7,6 +7,7 @@ import AuthComponent from "./components/AuthComponent";
 import AdminLogin from "./components/AdminLogin";
 import AdminProfile from "./components/AdminProfile";
 import AdminAuth from "./components/AdminAuthComponent";
+import AddProduct from "./components/AddProduct";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
             <Route path="/profile" element={<AuthComponent><Profile /></AuthComponent>} />
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/admin-profile" element={<AdminAuth><AdminProfile /></AdminAuth>} />
+            <Route path="/add-product" element={<AddProduct />} />
         </Route>
     )
 )
