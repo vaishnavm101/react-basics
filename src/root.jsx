@@ -8,12 +8,13 @@ import AdminLogin from "./components/AdminLogin";
 import AdminProfile from "./components/AdminProfile";
 import AdminAuth from "./components/AdminAuthComponent";
 import AddProduct from "./components/AddProduct";
+import LoginTwo from "./components/LoginTwo";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LoginTwo />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<AuthComponent><Profile /></AuthComponent>} />
             <Route path="/admin-login" element={<AdminLogin />} />

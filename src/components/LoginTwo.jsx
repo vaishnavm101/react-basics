@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
-const Login = () => {
+const LoginTwo = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [message, setMessage] = useState('')
-    const navigate = useNavigate()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const url = "http://localhost:8000/user/login"
@@ -13,26 +11,19 @@ const Login = () => {
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email: email,
-                password: password
+                email, password
             })
         }
         const response = await fetch(url, options)
-        const data = await response.json()
-        // console.log("Data: ", data)
-        if (data.token) {
-            // localStorage.setItem("token", data.token)
-            // navigate("/profile")
-        }
-        else {
-            setMessage(data.msg)
-        }
+        const data = await response.text()
+        console.log("Data: ", data)
+
     }
 
-    const handleCheckLogin = async () => {
+    const handleGetProfile = async () => {
         const url = "http://localhost:8000/user/"
         const options = {
             method: "GET",
@@ -40,30 +31,27 @@ const Login = () => {
         }
         const response = await fetch(url, options)
         const data = await response.text()
-        console.log("Data: ",data)
+
     }
+
     return (
         <>
-            <h1>Login Form</h1>
+            <h1>Login Page</h1>
             <form onSubmit={handleSubmit}>
-                Enter Email:
-                <input type="email" name="email" id="email"
+                Enter Email: <input type="email" name="email" id="email"
+                    value={email} onChange={(e) => setEmail(e.target.value)}
                     placeholder='Email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                 /> <br /><br />
                 Enter Password: <input type="password" name="password" id="password"
+                    value={password} onChange={(e) => setPassword(e.target.value)}
                     placeholder='Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                /><br /><br />
+                /> <br /> <br />
                 <input type="submit" value="Login" />
             </form>
-            <h3>{message}</h3>
-            <hr />
-            <button onClick={handleCheckLogin}>Check login</button>
+            <hr /><hr />
+            <button onClick={handleGetProfile}>Get Profile</button>
         </>
     )
 }
 
-export default Login
+export default LoginTwo
